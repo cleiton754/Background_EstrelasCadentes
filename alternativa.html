@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Aurora GSAP Teste</title>
+
+  <style>
+    /* Reset básico */
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom, #0a0a21, #0d0d2b, #1a1a4d);
+      color: white;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Seção que contém o background e conteúdo sobreposto */
+    .stars-section {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden; /* evita barras de rolagem durante a animação */
+    }
+
+    /* Container das estrelas (absoluto para ficar por trás do conteúdo) */
+    .stars {
+      position: absolute;
+      inset: 0; /* top:0; right:0; bottom:0; left:0 */
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    /* Conteúdo que fica acima das estrelas */
+    .stars-content {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    /* Estrela / meteoro - usamos variáveis CSS para controlar posição/duração/atraso */
+    .meteor {
+      position: absolute;
+      left: var(--left, 50%);    /* controla a posição horizontal de partida */
+      top: -20%;                /* começa acima da viewport */
+      width: 2px;
+      height: 120px;
+      border-radius: 30px;
+      background: linear-gradient(to bottom, #fff, rgba(150,150,255,.6), transparent);
+      transform-origin: top;
+      transform: rotate(128deg);
+      filter: drop-shadow(0 0 6px rgba(141,147,255,.75));
+      will-change: transform, opacity; /* dica de performance ao navegador */
+      animation: shoot var(--dur, 7s) linear var(--delay, 0s) infinite;
+      pointer-events: none;
+    }
+
+    /* Animação que faz a estrela "cair" em diagonal e desaparecer fora da tela */
+    @keyframes shoot {
+      0% {
+        transform: translate(0, 0) rotate(120deg);
+        opacity: 1;
+      }
+      70% { 
+        opacity: 1;
+       }
+      100% {
+        transform: translate(120vw, 120vh) rotate(128deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="stars-section">
+    <section class="stars">
+  <!-- crie várias estrelas; ajuste --left, --delay e --dur para variar -->
+  <span class="meteor" style="--left:5%;  --delay:.2s; --dur:6s;"></span>
+  <span class="meteor" style="--left:20%; --delay:.8s; --dur:8s;"></span>
+  <span class="meteor" style="--left:40%; --delay:2s; --dur:5s;"></span>
+  <span class="meteor" style="--left:65%; --delay:1.2s; --dur:10s;"></span>
+  <span class="meteor" style="--left:85%; --delay:3s; --dur:7s;"></span>
+</section>
+    <div class="stars-content">
+      <h1>Studio Design Web</h1>
+      <p>Background animado - Estrela Cadente</p>
+    </div>
+  </section>
+
+ 
+</body>
+
+</html>

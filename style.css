@@ -1,0 +1,41 @@
+ body {
+   margin: 0;
+   background: linear-gradient(to bottom, #0a0a21, #0d0d2b, #1a1a4d);
+   color: white;
+   font-family: Arial, sans-serif;
+   overflow-x: hidden;
+ }
+
+ .stars-section {
+   position: relative;
+   min-height: 100vh;
+   overflow: hidden;
+ }
+ .stars-container {
+   position: absolute;
+   inset: 0;
+   z-index: 0;
+   overflow: hidden;
+ }
+
+ .star {
+   position: absolute;
+   width: 2px; /*Aqui voce controla a espessura da estrela */
+   height: 100px; /*Aqui voce controla o tamanho da estrela */
+   border-radius: 30px; /*Aqui voce controla o arredondamento da ponta da estrela */
+   background: linear-gradient(to bottom, rgb(255, 255, 255),rgba(150, 150, 255, 0.652),rgba(255, 255, 255, 0));/* Aqui voce controla a cor da estrela */
+   transform: rotate(128deg);/*Aqui voce controla a rotação da estrela */
+   transform-origin: top;
+   filter: drop-shadow(0 0 6px rgba(141, 147, 255, 0.75));  /*Aqui voce controla o brilho da estrela */
+   pointer-events: none;
+ }
+ .stars-content {
+   position: relative;
+   z-index: 1;
+   min-height: 100vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   text-align: center;
+ }
